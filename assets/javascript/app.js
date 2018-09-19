@@ -3,6 +3,8 @@ function checkAnswer()
 var amountCorrect = 0;
 
 var amountIncorrect = 0;
+
+
          
 for(var i = 1; i <= 6; i++) {
   var radios = document.getElementsByName('answers'+i);
@@ -18,9 +20,10 @@ for(var i = 1; i <= 6; i++) {
   }
  }                   
    console.log(amountCorrect);
-  
+   var amountUnanswered = 6-amountCorrect-amountIncorrect
    $(".incorrecttotal").text("Incorrect total: "  + amountIncorrect)
    $(".correcttotal").text("Correct total: " + amountCorrect)
+   $(".unansweredtotal").text("Unanswered total: " + amountUnanswered)
    console.log(amountIncorrect);
    
   }
@@ -42,6 +45,13 @@ $(".start-button").on("click", function () {
     $(".main-section").show();
     $(".finalscreen").hide();
     console.log("hi");
+    setTimeout(function() {
+    $(".start-button").hide();
+    $(".main-section").hide();
+    $(".finalscreen").show();
+    checkAnswer();
+      
+    }, 30000);
 })
 
 $(".submit-button").on("click", function () {
@@ -52,6 +62,8 @@ $(".submit-button").on("click", function () {
 checkAnswer();
 
 })
+;
+
 
 
 
